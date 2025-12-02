@@ -1,0 +1,159 @@
+/*
+  Navbar styling with ice-glass (frosted glass) effect and blue glow.
+
+  Ice-glass / frosted-glass explanation:
+  - `background: rgba(...)` gives a subtle translucent base color.
+  - `backdrop-filter: blur(8px) saturate(120%)` blurs the content behind the navbar
+    and slightly boosts saturation to give that frosted, icy look.
+  - A faint border and subtle gradient add depth to the surface.
+
+  Glow effect explanation:
+  - The blue glowing halo around the navbar uses `box-shadow` with a semi-opaque
+    bluish color to create the outer glow.
+  - Links use `text-shadow` and `box-shadow` on hover for focused glowing highlights.
+*/
+
+.navbar {
+  position: sticky;
+  top: 16px;
+  z-index: 40;
+  display: flex;
+  justify-content: center; /* center horizontally */
+  padding: 12px 20px;
+  
+  border-radius: 14px;
+  margin: 0 20px;
+
+  /* Ice-glass background */
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.401), rgba(255,255,255,0.02));
+  border: 2px solid rgba(0, 0, 0, 0.384);
+  backdrop-filter: blur(8px) saturate(120%);
+  -webkit-backdrop-filter: blur(8px) saturate(120%);
+
+  /* Blue glowing halo */
+  box-shadow: 0 6px 30px rgba(60,120,255,0.12), 0 0 40px rgba(60,120,255,0.06);
+  transition: box-shadow 250ms ease, transform 200ms ease;
+}
+
+.navbar:hover {
+  box-shadow: 0 10px 45px rgba(60,120,255,0.14), 0 0 60px rgba(60,120,255,0.09);
+}
+
+.nav-inner {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* keep items centered */
+  position: relative;
+}
+
+.brand {
+  font-weight: 700;
+  color: #eaf2ff;
+  letter-spacing: 0.6px;
+  margin-right: 24px;
+  user-select: none;
+}
+
+/* Hamburger button */
+.hamburger {
+  position: absolute;
+  right: 18px;
+  width: 44px;
+  height: 36px;
+  display: none; /* hidden on desktop */
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+}
+
+.hamburger span {
+  display: block;
+  height: 3px;
+  border-radius: 3px;
+  background: linear-gradient(90deg, #bfe0ff, #7fb9ff);
+  transition: transform 220ms ease, opacity 200ms ease;
+}
+
+.hamburger.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.is-open span:nth-child(2) { opacity: 0; }
+.hamburger.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* Navigation links: centered horizontally */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 28px;
+  align-items: center;
+  margin: 0;
+  padding: 0 12px;
+}
+
+.nav-links li a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: 8px;
+  transition: transform 180ms ease, box-shadow 220ms ease, color 180ms ease;
+  scale: 1;
+  
+}
+
+.nav-links li a:hover {
+  color: #f4f4f4;
+  transform: translateY(-3px);
+  /* subtle glowing highlight on hover */
+  box-shadow: 0 6px 20px rgba(80, 150, 255, 0.967), 0 0 14px rgba(90,170,255,1);
+  text-shadow: 0 0 8px rgba(120,180,255,0.25);
+  scale: 1.1;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.401), rgba(0, 0, 0, 0.281));
+}
+
+/* Mobile styles: show hamburger & stack links vertically when open */
+@media (max-width: 768px) {
+  .hamburger { display: flex; }
+
+  .nav-links {
+    position: absolute;
+    top: 64px;
+    left: 50%;
+    transform: translateX(-50%) scaleY(0.98);
+    flex-direction: column;
+    gap: 12px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 14px 18px;
+    border-radius: 12px;
+    width: calc(100% - 56px);
+    max-width: 420px;
+    opacity: 0;
+    pointer-events: none;
+    transform-origin: top center;
+    transition: opacity 220ms ease, transform 220ms ease;
+  }
+
+  .nav-links.open {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(-50%) scaleY(1);
+  }
+
+  .nav-links li a {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 10px 8px;
+  }
+}
+
+/* accessibility focus states */
+.nav-links li a:focus {
+  outline: 3px solid rgba(120,170,255,0.18);
+  outline-offset: 4px;
+}
