@@ -18,6 +18,9 @@ export default function Login() {
                 <label htmlFor="password">Password:</label>
                 <input type="password" id="password" name="password" required />
             </div>
+            <div className="form-group">
+                <label htmlFor="OTP">OTP:</label><input type="text" id="OTP" name="OTP" required />
+            </div>
             <button type="submit">Login</button>
         </form>
     </div>

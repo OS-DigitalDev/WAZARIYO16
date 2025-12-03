@@ -2,7 +2,7 @@ import "../styles/Signup.css";
 export default function Signup() {
   return (
     <div className="signup-page">
-        <video autoPlay muted loop className="background-video">
+        <video autoPlay unmuted loop className="background-video">
             <source src="/src/video/video.mp4" type="video/mp4" />
             Your browser does not support the video tag.
         </video>
@@ -20,6 +20,14 @@ export default function Signup() {
             <div className="form-group">
                 <label htmlFor="password">Password:</label>
                 <input type="password" id="password" name="password" required />
+            </div>
+            <div className="form-group">
+                <label htmlFor="confirm-password">Confirm Password:</label>
+                <input type="password" id="confirm-password" name="confirm-password" required />
+            </div>
+            <div className="form-group">
+                <label htmlFor="OTP">OTP:</label>
+                <input type="text" id="OTP" name="OTP" required />
             </div>
             <button type="submit">Sign Up</button>
         </form>
