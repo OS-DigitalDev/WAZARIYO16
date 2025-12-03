@@ -1,5 +1,5 @@
 import '../styles/Home.css';
-
+import { Link } from 'react-router-dom'; 
 export default function Home() {
   return (
     <div className="home">
@@ -11,8 +11,7 @@ export default function Home() {
           <p>Your journey starts here</p>
           <button className="cta-button">Get Started</button>
         </div>
-      </header>
-
+        </header>
       {/* Features Section */}
       <section className="features">
         <h2>Our Features</h2>
@@ -39,7 +38,9 @@ export default function Home() {
       <section className="cta-section">
         <h2>Ready to get started?</h2>
         <p>Join thousands of users already using our platform</p>
-        <button className="primary-button">Sign Up Now</button>
+        <button className="primary-button"> <Link to="/signup">Sign Up Now</Link></button>
+    
+        <p>Already have an account? <Link to="/login">Log In</Link></p>
       </section>
     </div>
   );

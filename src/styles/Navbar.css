@@ -76,7 +76,7 @@
   display: block;
   height: 3px;
   border-radius: 3px;
-  background: linear-gradient(90deg, #bfe0ff, #7fb9ff);
+  background: linear-gradient(90deg, #145897, #7fb9ff);
   transition: transform 220ms ease, opacity 200ms ease;
 }
 
@@ -140,8 +140,12 @@
 
   .nav-links.open {
     opacity: 1;
+    background: linear-gradient(90deg, #1c2837c0, #000000c0, #000000bf);
     pointer-events: auto;
     transform: translateX(-50%) scaleY(1);
+    backdrop-filter: blur(120px) saturate(820%);
+  -webkit-backdrop-filter: blur(120px) saturate(820%);
+
   }
 
   .nav-links li a {
